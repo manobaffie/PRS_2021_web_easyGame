@@ -1,0 +1,87 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Bot twitch-youtube</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <div class="page1" id="page1">
+            <h1 class="titre">mon jeu</h1>
+            <label class="label_nom_du_fichier" for="nom_du_fichier">nom du fichier</label>
+            <input class="input_nom_du_fichier" type="file" name="nom_du_fichier" id="nom_du_fichier">
+
+            <br>
+            <button class="boutton_commencer_le_jeu" onclick="Function_Commencer_Le_Jeu()">Commencer le jeu</button>
+        </div>
+
+        <div class="page2" id="page2">
+            <p class="chronometre" id="chronometre"></p>
+
+            <img class="afficher_image" id="afficher_image" src="">
+            <p class="afficher_question" id="afficher_question"></p>
+            <input class="input_ma_reponse" type="text" id="ma_reponse">
+
+            <button class="valider" onclick="Function_valider()">VALIDER</button>
+            <label class="numero_page" id="numero_page"></label>
+        </div>
+
+        <script type="text/javascript">
+                var questions;
+                var numero_question = 0;
+                var chronometre_seconde = 0;
+                var chronometre_minutes = 0;
+
+                setInterval(function() {
+                    document.getElementById('chronometre').innerText = chronometre_minutes + "," + chronometre_seconde;
+                    chronometre_seconde += 1;
+                    if (chronometre_seconde == 60) {
+                        chronometre_minutes++;
+                        chronometre_seconde = 0;
+                    }
+                }, 1000);
+
+                function Function_Commencer_Le_Jeu() {
+                    document.getElementById("page1").style.display = "none";
+                    document.getElementById("page2").style.display = "block";
+
+                    chronometre_seconde = 0;
+                    chronometre_minutes = 0;
+                    document.getElementById('afficher_image').src = questions.questions[numero_question].image;
+                    document.getElementById('afficher_question').innerText = questions.questions[numero_question].question;
+                }
+
+                function Function_valider() {
+                    if (document.getElementById('ma_reponse').value == questions.questions[numero_question].reponse) {
+                        numero_question++;
+                        alert("Bravo, tu as trouvé !!!");
+                        document.getElementById('afficher_image').src = questions.questions[numero_question].image;
+                        document.getElementById('afficher_question').innerText = questions.questions[numero_question].question;
+                    } else {
+                        alert("Tu t'es trompé, réessaye encore une fois");
+                    }
+                }
+
+        </script>
+
+        <script type="text/javascript">
+            document.getElementById('nom_du_fichier').addEventListener('change', readSingleFile, false);
+
+            function readSingleFile(e) {
+                var file = e.target.files[0];
+                console.log(file);
+                if (!file) {
+                    return;
+                }
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    questions = JSON.parse(e.target.result);
+                };
+                reader.readAsText(file);
+            }
+        </script>
+        
+    </body>
+</html>
+
