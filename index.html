@@ -5,22 +5,27 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link type="text/css" rel="stylesheet" href="style.css">
     </head>
-    <body>
+    <body class="principal">
 
         <div class="page1" id="page1">
             <h1 class="titre">mon jeu</h1>
-            <label class="label_nom_du_fichier" for="nom_du_fichier">nom du fichier</label>
-            <input class="input_nom_du_fichier" type="file" name="nom_du_fichier" id="nom_du_fichier">
 
-            <br>
+            <div class="file-input">
+                <input type="file" id="nom_du_fichier" class="input_nom_du_fichier">
+                <label for="file">choisire un fichier</label>
+            </div>
+
+              <br>
             <button class="boutton_commencer_le_jeu" onclick="Function_Commencer_Le_Jeu()">Commencer le jeu</button>
         </div>
 
         <div class="page2" id="page2">
             <p class="chronometre" id="chronometre"></p>
 
-            <img class="afficher_image" id="afficher_image" src="">
-            <p class="afficher_question" id="afficher_question"></p>
+            <div class="afficher_img_quest">
+                <img class="afficher_image" id="afficher_image" src="">
+                <p class="afficher_question" id="afficher_question"></p>
+            </div>
             <input class="input_ma_reponse" type="text" id="ma_reponse">
 
             <button class="valider" onclick="Function_valider()">VALIDER</button>
@@ -50,6 +55,7 @@
                     chronometre_minutes = 0;
                     document.getElementById('afficher_image').src = questions.questions[numero_question].image;
                     document.getElementById('afficher_question').innerText = questions.questions[numero_question].question;
+                    document.getElementById('numero_page').innerText = (numero_question + 1) + '/' + questions.questions.length;
                 }
 
                 function Function_valider() {
@@ -58,11 +64,15 @@
                         alert("Bravo, tu as trouvé !!!");
                         document.getElementById('afficher_image').src = questions.questions[numero_question].image;
                         document.getElementById('afficher_question').innerText = questions.questions[numero_question].question;
+                        document.getElementById('numero_page').innerText = (numero_question + 1) + '/' + questions.questions.length;
                     } else {
                         alert("Tu t'es trompé, réessaye encore une fois");
                     }
                 }
 
+                function Function_fin_du_jeu() {
+                    
+                }
         </script>
 
         <script type="text/javascript">
