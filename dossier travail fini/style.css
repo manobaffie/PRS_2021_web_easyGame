@@ -1,0 +1,90 @@
+.fond-principal {
+    background-color: #76a1c7;
+}
+
+/* ---------------------- */
+
+.page1 {
+    margin: 0 auto;
+    width: 50%;
+    background-color: #658aaa;
+    padding: 70px;
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.titre {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.text_choisire_un_fichier {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.nom_du_fichier {
+    margin-left: 32%;
+    margin-bottom: 40px;
+    background-color: #53728d;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 10px;
+    cursor: pointer;
+}
+
+.bouton_commencer_le_jeu {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    margin-left: 38%;
+    cursor: pointer;
+    border-radius: 25px;
+}
+
+/* ---------------------- */
+
+.page2 {
+    margin: 0 auto;
+    width: 50%;
+}
+
+.afficher_chronometre {
+    padding: 10px;
+    text-align: right;
+}
+
+.afficher_image {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 95%;
+}
+
+.afficher_question {
+    text-align: center;
+}
+
+.ma_reponse {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    margin-left: 42%;
+    cursor: pointer;
+    border-radius: 25px;
+    margin: 10px;
+}
+
+/* ---------------------- */
+
+.page3 {
+    margin: 0 auto;
+    width: 50%;
+}
+
+.affichage_question {
+    text-align: center;
+}

@@ -62,3 +62,8 @@
     text-align: center;
     padding: 10px 20px;
 }
+
+.page3 {
+    display: none;
+    text-align: center;
+}

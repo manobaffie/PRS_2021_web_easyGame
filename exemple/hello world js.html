@@ -1,0 +1,25 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>GAME</title>
+    <meta name="viewport" content="width=device-width, initial scale=1.0">
+</head>
+
+<style>
+.bonjour_bleu {
+    color: blue;
+}
+</style>
+
+<body>
+    <h1 id="bonjour_bleu_vert" class="bonjour_bleu">HELLO WORLD</h1>
+    <button onclick="bouton_changement_de_couleur();">changement de couleur</button>
+</body>
+
+<script>
+    function bouton_changement_de_couleur(params) {        
+        document.getElementById('bonjour_bleu_vert').style.color = "green"
+    }
+</script>
+
+</html>

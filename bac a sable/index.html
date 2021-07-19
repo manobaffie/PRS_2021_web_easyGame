@@ -1,7 +1,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Bot twitch-youtube</title>
+        <title>GAME</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link type="text/css" rel="stylesheet" href="style.css">
     </head>
@@ -32,6 +32,13 @@
             <label class="numero_page" id="numero_page"></label>
         </div>
 
+        <div class="page3" id="page3">
+            <p class="affichage_resultat">Bien joué vous avez fini le quiz en : </p>
+            <p class="" id="affichage_temp"></p>
+            <p>et répondu a </p>
+            <p class="" id="affichage_question"></p>
+            <p class="">questions</p>
+        </div>
         <script type="text/javascript">
                 var questions;
                 var numero_question = 0;
@@ -53,25 +60,33 @@
 
                     chronometre_seconde = 0;
                     chronometre_minutes = 0;
-                    document.getElementById('afficher_image').src = questions.questions[numero_question].image;
-                    document.getElementById('afficher_question').innerText = questions.questions[numero_question].question;
-                    document.getElementById('numero_page').innerText = (numero_question + 1) + '/' + questions.questions.length;
+                    document.getElementById('afficher_image').src = questions[numero_question].image;
+                    document.getElementById('afficher_question').innerText = questions[numero_question].question;
+                    document.getElementById('numero_page').innerText = (numero_question + 1) + '/' + questions.length;
                 }
 
                 function Function_valider() {
-                    if (document.getElementById('ma_reponse').value == questions.questions[numero_question].reponse) {
-                        numero_question++;
+                    if (document.getElementById('ma_reponse').value == questions[numero_question].reponse) {
                         alert("Bravo, tu as trouvé !!!");
-                        document.getElementById('afficher_image').src = questions.questions[numero_question].image;
-                        document.getElementById('afficher_question').innerText = questions.questions[numero_question].question;
-                        document.getElementById('numero_page').innerText = (numero_question + 1) + '/' + questions.questions.length;
+                        if (numero_question + 1 == questions.length) {
+                            Function_fin_du_jeu();
+                        } else {                            
+                            numero_question++;
+                            document.getElementById('afficher_image').src = questions[numero_question].image;
+                            document.getElementById('afficher_question').innerText = questions[numero_question].question;
+                            document.getElementById('numero_page').innerText = (numero_question + 1) + '/' + questions.length;
+                        }
                     } else {
                         alert("Tu t'es trompé, réessaye encore une fois");
                     }
                 }
 
                 function Function_fin_du_jeu() {
-                    
+                    document.getElementById('page2').style.display = "none";
+                    document.getElementById('page3').style.display = "block";
+
+                    document.getElementById('affichage_temp').innerText = chronometre_minutes + "," + chronometre_seconde + "minutes";
+                    document.getElementById('affichage_question').innerText = questions.length;
                 }
         </script>
 
